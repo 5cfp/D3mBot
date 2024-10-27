@@ -5,7 +5,7 @@ from mcstatus import JavaServer
 
 class Client(discord.Client):
     async def on_ready(self):
-        print(f"The Bot is running and")
+        print(f"The Bot is Running!!!")
 
     async def on_message(self, message):
         if message.author == self.user:
