@@ -40,6 +40,10 @@ intents.message_content = True
 client = Client(intents=intents)
 
 #create token.txt file and put the token in the first line
-with open('src/token.txt', 'r') as tokenfile:
-    token = tokenfile.readline()
+try:
+    with open('token.txt', 'r') as tokenfile:
+        token = tokenfile.readline()
+except:
+    with open('src/token.txt', 'r') as tokenfile:
+        token = tokenfile.readline()    
 client.run(token.strip())
