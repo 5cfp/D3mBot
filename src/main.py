@@ -1,8 +1,12 @@
 import discord
+import urllib.request
+from mcstatus import JavaServer
+
+
 
 class Client(discord.Client):
     async def on_ready(self):
-        print(f"The Bot is running and logged on as {self.user}")
+        print(f"The Bot is running")
 
     async def on_message(self, message):
         if message.author == self.user:
@@ -12,10 +16,18 @@ class Client(discord.Client):
             await message.channel.send(f'وعليكم السلام {message.author}')
 
         if message.content.startswith('بوت مساعدة'):
-            await message.channel.send(f'انقلع')
+            await message.channel.send(f'للحصول على اي بي سيرفر ماين كرافت اكتب اي بي ماينكرافت')
 
         if message.content.startswith('اي بي ماينكرافت') or message.content.startswith('ايبي ماينكرافت') or message.content.startswith('آي بي ماينكرافت') or message.content.startswith('آيبي ماينكرافت') or message.content.startswith('عنوان ماينكرافت'):
-            await message.channel.send(f'NOT Implemented :(')
+            mcip = urllib.request.urlopen('https://api.ipify.org').read().decode('utf8')
+        
+            try:
+                server = JavaServer.lookup(mcip)
+                status = server.status()
+                await message.channel.send("السيرفر شغال وعنوان السيرفر هو " + mcip)
+            except:
+                await message.channel.send("السيرفر طافي")
+
 
         if message.content.startswith('بوت من انت') or message.content.startswith('بوت من أنت'):
             await message.channel.send(f'هلا {message.author} أنا بوت قروب الدعم مكتوب بلغة بايثون والكود حقي مفتوح المصدر وأنا هنا لمساعدتك أخي الكريم')
