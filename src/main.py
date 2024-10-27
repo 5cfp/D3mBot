@@ -3,7 +3,6 @@ import urllib.request
 from mcstatus import JavaServer
 
 
-
 class Client(discord.Client):
     async def on_ready(self):
         print(f"The Bot is running and")
@@ -28,14 +27,11 @@ class Client(discord.Client):
             except:
                 await message.channel.send("السيرفر طافي")
 
-
         if message.content.startswith('بوت من انت') or message.content.startswith('بوت من أنت'):
             await message.channel.send(f'هلا {message.author} أنا بوت قروب الدعم مكتوب بلغة بايثون والكود حقي مفتوح المصدر وأنا هنا لمساعدتك أخي الكريم')
 
         if message.content.startswith('d3m source code'):
             await message.channel.send(f'https://github.com/5cfp/d3mbot')
-
-
 
 
 intents = discord.Intents.default()
