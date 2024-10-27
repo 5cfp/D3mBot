@@ -20,6 +20,10 @@ class Client(discord.Client):
         if message.content.startswith('بوت من انت') or message.content.startswith('بوت من أنت'):
             await message.channel.send(f'هلا {message.author} أنا بوت قروب الدعم مكتوب بلغة بايثون والكود حقي مفتوح المصدر وأنا هنا لمساعدتك أخي الكريم')
 
+        if message.content.startswith('d3m source code'):
+            await message.channel.send(f'https://github.com/5cfp/d3mbot')
+
+
 
 
 intents = discord.Intents.default()
@@ -28,6 +32,6 @@ intents.message_content = True
 client = Client(intents=intents)
 
 #create token.txt file and put the token in the first line
-with open('token.txt', 'r') as tokenfile:
+with open('src/token.txt', 'r') as tokenfile:
     token = tokenfile.readline()
 client.run(token.strip())
