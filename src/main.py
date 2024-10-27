@@ -6,13 +6,13 @@ from mcstatus import JavaServer
 
 class Client(discord.Client):
     async def on_ready(self):
-        print(f"The Bot is running")
+        print(f"The Bot is running and")
 
     async def on_message(self, message):
         if message.author == self.user:
             return
 
-        if message.content.startswith('السلام عليكم يا قروب الدعم'):
+        if message.content.startswith('السلام عليكم يا قروب الدعم') or message.content.startswith('السلام عليكم'):
             await message.channel.send(f'وعليكم السلام {message.author}')
 
         if message.content.startswith('بوت مساعدة'):
