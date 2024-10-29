@@ -33,15 +33,18 @@ class Client(discord.Client):
         if message.content.startswith('d3m source code'):
             await message.channel.send(f'https://github.com/5cfp/d3mbot')
 
-        if message.content.startswith('تحكم داخلي'):
+        if message.content.startswith('تحكم داخلي') and message.author.name == "5cfp":
             await message.channel.send(f'يتم التحكم بالبوت من قبل المشغل')
             while(1):
-                mess = input("Enter message:")
+                mess = input("Enter message: ")
                 if mess == "stopcon":
                     await message.channel.send(f'هلا انا البوت رجعت طبيعي')
                     return
                 else:
                     await message.channel.send(mess)
+
+        if message.content.startswith('تحكم داخلي') and message.author.name != "5cfp":
+            await message.channel.send(f'انقلع أنت منت بابا')
 
 
 intents = discord.Intents.default()
